@@ -16,6 +16,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
+import com.vacuum.kotlincheatsheet.R.id.pdfView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -35,26 +36,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         pdfView  = findViewById(R.id.pdfView)
-        btn_view.setOnClickListener(View.OnClickListener {
-            pickFile()
-        })
+        pickFile()
     }
-
-
     fun pickFile() {
         val permissionCheck = ContextCompat.checkSelfPermission(this,
                 READ_EXTERNAL_STORAGE)
-
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                     this,
                     arrayOf(READ_EXTERNAL_STORAGE),
-                    PERMISSION_CODE
-            )
+                    PERMISSION_CODE)
             return
         }
         displayFromAsset()
-        //launchPicker()
     }
     private fun displayFromAsset() {
         pdfView!!.fromAsset("sample.pdf")
