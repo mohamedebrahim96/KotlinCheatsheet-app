@@ -41,8 +41,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     fun pickFile() {
         val permissionCheck = ContextCompat.checkSelfPermission(this,
                 READ_EXTERNAL_STORAGE)
