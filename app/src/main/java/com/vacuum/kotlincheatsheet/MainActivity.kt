@@ -1,5 +1,6 @@
 package com.vacuum.kotlincheatsheet
 
+import android.app.ProgressDialog.show
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.pm.PackageManager
@@ -47,10 +48,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_item_one -> Toast.makeText(this, "Clicked item one", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_one -> displayFromAsset("kotlincheatsheet.pdf")
             R.id.nav_item_two -> displayFromAsset("kotlin-full.pdf")
-            R.id.nav_item_three -> Toast.makeText(this, "Clicked item three", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_four -> Toast.makeText(this, "Clicked item four", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_three -> displayFromAsset("Kotlin-Essentials.pdf")
+            R.id.nav_item_four ->  displayFromAsset("Programming-Kotlin.pdf")
         }
         drawer.closeDrawer(GravityCompat.START)
         return true
