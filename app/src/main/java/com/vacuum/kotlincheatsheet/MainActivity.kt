@@ -7,6 +7,7 @@ import android.content.res.Configuration
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
@@ -14,6 +15,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -34,6 +36,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
+        navigationView.setNavigationItemSelectedListener(this)
         setSupportActionBar(toolbar)
         drawer = findViewById(R.id.drawer_layout)
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close)
@@ -45,10 +48,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_one -> Toast.makeText(this, "Clicked item one", Toast.LENGTH_SHORT).show()
-            R.id.nav_item_two -> Toast.makeText(this, "Clicked item two", Toast.LENGTH_SHORT).show()
+            R.id.nav_item_two -> displayFromAsset("kotlin-full.pdf")
             R.id.nav_item_three -> Toast.makeText(this, "Clicked item three", Toast.LENGTH_SHORT).show()
             R.id.nav_item_four -> Toast.makeText(this, "Clicked item four", Toast.LENGTH_SHORT).show()
         }
+        drawer.closeDrawer(GravityCompat.START)
         return true
     }
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -65,7 +69,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         return super.onOptionsItemSelected(item)
     }
-
+    override fun onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
 
 
     fun pickFile() {
@@ -80,10 +90,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
         displayFromAsset()
     }
-    private fun displayFromAsset() {
+    private fun displayFromAsset(path:String = "kotlincheatsheet.pdf") {
         //kotlincheatsheet.pdf
         //kotlin-full.pdf
-        pdfView!!.fromAsset("kotlin-full.pdf")
+        pdfView!!.fromAsset(path)
                 .defaultPage(0)
                 .enableAnnotationRendering(true)
                 .scrollHandle(DefaultScrollHandle(this))
