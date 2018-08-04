@@ -11,6 +11,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.github.barteksc.pdfviewer.PDFView
@@ -20,12 +21,18 @@ import android.widget.ExpandableListView
 
 
 
+
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var pdfView:PDFView? = null
     val PERMISSION_CODE = 42042
     val READ_EXTERNAL_STORAGE = "android.permission.READ_EXTERNAL_STORAGE"
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
+    private var mMenuAdapter: ExpandableListAdapter? = null
+    private var expandableList: ExpandableListView? = null
+    private var listDataHeader: MutableList<ExpandedMenuModel>? = null
+    private var listDataChild: HashMap<ExpandedMenuModel,List<Item>>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,12 +43,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         pickFile()
     }
 
-    var mMenuAdapter: ExpandableListAdapter? = null
-    var expandableList: ExpandableListView? = null
-    var listDataHeader: MutableList<ExpandedMenuModel>? = null
-    //var listDataHeader_2: ArrayList<Item>? = null
 
-    var listDataChild: HashMap<ExpandedMenuModel,List<Item>>? = null
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         navigationView.setNavigationItemSelectedListener(this)
@@ -92,10 +94,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         item2.iconImg = R.drawable.ic_kotlin
         listDataHeader!!.add(item2)
 
-        val item3 = ExpandedMenuModel()
-        item3.iconName = "Kotlin Essentials"
-        item3.iconImg = R.drawable.ic_kotlin
-        listDataHeader!!.add(item3)
+        val item77 = ExpandedMenuModel()
+        item77.iconName = "Kotlin Essentials"
+        item77.iconImg = R.drawable.ic_kotlin
+        listDataHeader!!.add(item77)
 
         val item4 = ExpandedMenuModel()
         item4.iconName = "Programming Kotlin"
@@ -236,25 +238,25 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         heading3_8.page_numer = 78
         heading3_8.title = "Chapter 8"
         heading3_8.book_name = "Kotlin-Essentials.pdf"
-        Essentials!!.add(heading3_8)
+        Essentials.add(heading3_8)
 
         val heading3_9 = Item()
         heading3_9.page_numer = 88
         heading3_9.title = "Chapter 9"
         heading3_9.book_name = "Kotlin-Essentials.pdf"
-        Essentials!!.add(heading3_9)
+        Essentials.add(heading3_9)
 
         val heading3_10 = Item()
         heading3_10.page_numer = 92
         heading3_10.title = "Chapter 10"
         heading3_10.book_name = "Kotlin-Essentials.pdf"
-        Essentials!!.add(heading3_10)
+        Essentials.add(heading3_10)
 
         val heading3_11 = Item()
         heading3_11.page_numer = 96
         heading3_11.title = "Chapter 11"
         heading3_11.book_name = "Kotlin-Essentials.pdf"
-        Essentials!!.add(heading3_11)
+        Essentials.add(heading3_11)
         ///=============================================================================
         ///=============================================================================
         ///=============================================================================
@@ -264,13 +266,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         heading4_1.page_numer = 0
         heading4_1.title = "Full Book"
         heading4_1.book_name = "Programming-Kotlin.pdf"
-        Programming_Kotlin!!.add(heading3_11)
+        Programming_Kotlin.add(heading4_1)
 
         //=======================================================
 
         listDataChild!![listDataHeader!!.get(0)] = cheatsheet// Header, Child data
         listDataChild!![listDataHeader!!.get(1)] = ful_documantation
-        listDataChild!![listDataHeader!!.get(2)] = Essentials// Header, Child data
+        listDataChild!![listDataHeader!!.get(2)] = Essentials
         listDataChild!![listDataHeader!!.get(3)] = Programming_Kotlin
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -304,6 +306,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.activity_main_drawer, menu)
+        return true }
     fun pickFile() {
         val permissionCheck = ContextCompat.checkSelfPermission(this,
                 READ_EXTERNAL_STORAGE)

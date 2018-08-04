@@ -14,9 +14,9 @@
     <item android:title="About">
         <menu>
             <item android:id="@+id/nav_item_six"
-                android:title="Item 6" />
+                android:title="Help" />
             <item android:id="@+id/nav_item_seven"
-                android:title="Item 7" />
+                android:title="About us" />
         </menu>
     </item>
 </menu>

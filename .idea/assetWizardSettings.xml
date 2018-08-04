@@ -16,9 +16,26 @@
                             <entry key="launcher">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="75" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundImage" value="C:\Users\Home\Desktop\apps\KotlinCheatsheet\app\src\main\res\drawable\ic_kotlin.xml" />
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="foregroundImage" value="C:\Users\Home\Desktop\logo.png" />
                                     </map>
                                   </option>
                                 </PersistentState>

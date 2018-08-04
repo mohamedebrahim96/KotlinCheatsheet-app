@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.graphics.Typeface
+import android.support.v4.view.GravityCompat
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -23,10 +24,10 @@ class ExpandableListAdapter(private val mContext: Context, private val pdfView: 
 
     override fun getChildrenCount(groupPosition: Int): Int {
         var childCount = 0
-        if (groupPosition != 2) {
+        /*if (groupPosition != 3) {
             childCount = this.mListDataChild[this.mListDataHeader[groupPosition]]!!.size
-        }
-        return childCount
+        }*/
+        return this.mListDataChild[this.mListDataHeader[groupPosition]]!!.size
     }
 
     override fun getGroup(groupPosition: Int): Any {
@@ -76,7 +77,6 @@ class ExpandableListAdapter(private val mContext: Context, private val pdfView: 
         txtListChild.text = childText
         txtListChild.setOnClickListener {  view ->
             displayFromAsset(this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition).book_name,this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition).page_numer)
-            Toast.makeText(mContext, "Write your message here", Toast.LENGTH_LONG).show()
         }
         return convertView
     }
