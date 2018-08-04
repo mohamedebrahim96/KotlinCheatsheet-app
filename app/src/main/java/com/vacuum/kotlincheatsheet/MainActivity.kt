@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setHomeButtonEnabled(true)
 
         prepareListData()
-        mMenuAdapter = ExpandableListAdapter(this, listDataHeader!!, listDataChild!!, expandableList!!)
+        mMenuAdapter = ExpandableListAdapter(this, pdfView!!, listDataHeader!!, listDataChild!!, expandableList!!)
         expandableList!!.setAdapter(mMenuAdapter)
         expandableList!!.setOnChildClickListener(object : ExpandableListView.OnChildClickListener {
             override fun onChildClick(expandableListView: ExpandableListView, view: View, i: Int, i1: Int, l: Long): Boolean {
@@ -74,36 +74,42 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         listDataChild = HashMap()
 
         val item1 = ExpandedMenuModel()
-        item1.iconName = "heading1"
+        item1.iconName = "Cheat Sheet"
         item1.iconImg = R.drawable.ic_kotlin
         // Adding data header
         listDataHeader!!.add(item1)
 
 
         val item2 = ExpandedMenuModel()
-        item2.iconName = "heading2"
+        item2.iconName = "Full Documentation"
         item2.iconImg = R.drawable.ic_kotlin
         listDataHeader!!.add(item2)
 
         val item3 = ExpandedMenuModel()
-        item3.iconName = "heading3"
+        item3.iconName = "Kotlin Essentials"
         item3.iconImg = R.drawable.ic_kotlin
         listDataHeader!!.add(item3)
 
         // Adding child data
         val heading1 = ArrayList<String>()
-        heading1.add("Submenu of item 1")
+        heading1.add("Chapter 1")
+        heading1.add("Chapter 2")
+        heading1.add("Chapter 3")
 
         val heading2 = ArrayList<String>()
-        heading2.add("Submenu of item 2")
-        heading2.add("Submenu of item 2")
-        heading2.add("Submenu of item 2")
+        heading2.add("Overview")
+        heading2.add("Getting Started")
+        heading2.add("Basics")
+        heading2.add("Classes and Objects")
+        heading2.add("Functions and Lambdas")
+        heading2.add("Other")
+        heading2.add("Reference")
+        heading2.add("Tools")
+        heading2.add("FAQ")
 
         listDataChild!![listDataHeader!!.get(0)] = heading1// Header, Child data
         listDataChild!![listDataHeader!!.get(1)] = heading2
-
     }
-
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_item_one -> displayFromAsset("kotlincheatsheet.pdf")
@@ -135,8 +141,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
-
-
     fun pickFile() {
         val permissionCheck = ContextCompat.checkSelfPermission(this,
                 READ_EXTERNAL_STORAGE)
@@ -159,7 +163,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .spacing(10) // in dp
                 .load()
     }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
         if (requestCode == PERMISSION_CODE) {

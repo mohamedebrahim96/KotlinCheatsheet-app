@@ -1,18 +1,17 @@
 package com.vacuum.kotlincheatsheet
 
 import android.content.Context
-import android.widget.TextView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.graphics.Typeface
 import android.util.Log
 import android.view.View
-import android.widget.ExpandableListView
-import android.widget.BaseExpandableListAdapter
-import android.widget.ImageView
+import android.widget.*
+import com.github.barteksc.pdfviewer.PDFView
+import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 
 
-class ExpandableListAdapter(private val mContext: Context, private val mListDataHeader: List<ExpandedMenuModel> // header titles
+class ExpandableListAdapter(private val mContext: Context, private val pdfView: PDFView, private val mListDataHeader: List<ExpandedMenuModel> // header titles
                             , // child data in format of header title, child title
                             private val mListDataChild: HashMap<ExpandedMenuModel, List<String>>, internal var expandList: ExpandableListView) : BaseExpandableListAdapter() {
 
@@ -33,25 +32,20 @@ class ExpandableListAdapter(private val mContext: Context, private val mListData
     override fun getGroup(groupPosition: Int): Any {
         return this.mListDataHeader[groupPosition]
     }
-
     override fun getChild(groupPosition: Int, childPosition: Int): Any {
         Log.d("CHILD", mListDataChild[this.mListDataHeader[groupPosition]]
                 !!.get(childPosition))
         return this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition)
     }
-
     override fun getGroupId(groupPosition: Int): Long {
         return groupPosition.toLong()
     }
-
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {
         return childPosition.toLong()
     }
-
     override fun hasStableIds(): Boolean {
         return false
     }
-
     override fun getGroupView(groupPosition: Int, isExpanded: Boolean, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
         val headerTitle = getGroup(groupPosition) as ExpandedMenuModel
@@ -68,7 +62,6 @@ class ExpandableListAdapter(private val mContext: Context, private val mListData
         headerIcon.setImageResource(headerTitle.iconImg)
         return convertView
     }
-
     override fun getChildView(groupPosition: Int, childPosition: Int, isLastChild: Boolean, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
         val childText = getChild(groupPosition, childPosition) as String
@@ -78,16 +71,27 @@ class ExpandableListAdapter(private val mContext: Context, private val mListData
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             convertView = infalInflater.inflate(R.layout.list_submenu, null)
         }
-
         val txtListChild = convertView!!
                 .findViewById(R.id.submenu) as TextView
-
         txtListChild.text = childText
-
+        txtListChild.setOnClickListener {  view ->
+            displayFromAsset("kotlincheatsheet.pdf",10)
+            Toast.makeText(mContext, "Write your message here", Toast.LENGTH_LONG).show()
+        }
         return convertView
     }
-
     override fun isChildSelectable(groupPosition: Int, childPosition: Int): Boolean {
         return true
+    }
+
+    private fun displayFromAsset(path:String = "kotlincheatsheet.pdf" ,page:Int = 5) {
+        //kotlincheatsheet.pdf
+        //kotlin-full.pdf
+        pdfView!!.fromAsset(path)
+                .defaultPage(page)
+                .enableAnnotationRendering(true)
+                .scrollHandle(DefaultScrollHandle(mContext))
+                .spacing(10) // in dp
+                .load()
     }
 }
