@@ -1,6 +1,5 @@
 package com.vacuum.kotlincheatsheet
 
-import android.app.ProgressDialog.show
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.pm.PackageManager
@@ -14,7 +13,6 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import kotlinx.android.synthetic.main.activity_main.*
