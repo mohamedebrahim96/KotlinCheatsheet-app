@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val item4 = ExpandedMenuModel()
         item4.iconName = "Programming Kotlin"
         item4.iconImg = R.drawable.ic_kotlin
-        listDataHeader!!.add(item3)
+        listDataHeader!!.add(item4)
 //=====================================================
 //=====================================================
 //=====================================================
@@ -270,8 +270,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         listDataChild!![listDataHeader!!.get(0)] = cheatsheet// Header, Child data
         listDataChild!![listDataHeader!!.get(1)] = ful_documantation
-        listDataChild!![listDataHeader!!.get(0)] = Essentials// Header, Child data
-        listDataChild!![listDataHeader!!.get(1)] = Programming_Kotlin
+        listDataChild!![listDataHeader!!.get(2)] = Essentials// Header, Child data
+        listDataChild!![listDataHeader!!.get(3)] = Programming_Kotlin
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
