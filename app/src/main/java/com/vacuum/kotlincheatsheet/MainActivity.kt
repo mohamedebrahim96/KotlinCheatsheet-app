@@ -39,7 +39,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var mMenuAdapter: ExpandableListAdapter? = null
     var expandableList: ExpandableListView? = null
     var listDataHeader: MutableList<ExpandedMenuModel>? = null
-    var listDataChild: HashMap<ExpandedMenuModel, List<String>>? = null
+    var listDataHeader_2: MutableList<Item>? = null
+
+    var listDataChild: HashMap<ExpandedMenuModel,Item>? = null
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         navigationView.setNavigationItemSelectedListener(this)
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setHomeButtonEnabled(true)
 
         prepareListData()
-        mMenuAdapter = ExpandableListAdapter(this, pdfView!!, listDataHeader!!, listDataChild!!, expandableList!!)
+        //mMenuAdapter = ExpandableListAdapter(this, pdfView!!, listDataHeader!!, listDataChild!!, expandableList!!)
         expandableList!!.setAdapter(mMenuAdapter)
         expandableList!!.setOnChildClickListener(object : ExpandableListView.OnChildClickListener {
             override fun onChildClick(expandableListView: ExpandableListView, view: View, i: Int, i1: Int, l: Long): Boolean {
@@ -71,6 +73,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun prepareListData() {
         listDataHeader = ArrayList()
+        listDataHeader_2 = ArrayList()
+
         listDataChild = HashMap()
 
         val item1 = ExpandedMenuModel()
@@ -91,10 +95,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         listDataHeader!!.add(item3)
 
         // Adding child data
-        val heading1 = ArrayList<String>()
-        heading1.add("Chapter 1")
-        heading1.add("Chapter 2")
-        heading1.add("Chapter 3")
+        val heading1_1 = Item()
+        heading1_1.page_numer = 0
+        heading1_1.title = "Chapter 1"
+        heading1_1.book_name = "kotlincheatsheet.pdf"
+        listDataHeader_2!!.add(heading1_1)
+
+        val heading1_2 = Item()
+        heading1_2.page_numer = 1
+        heading1_2.title = "Chapter 2"
+        heading1_2.book_name = "kotlincheatsheet.pdf"
+        listDataHeader_2!!.add(heading1_2)
+
+        val heading1_3 = Item()
+        heading1_3.page_numer = 2
+        heading1_3.title = "Chapter 3"
+        heading1_3.book_name = "kotlincheatsheet.pdf"
+        listDataHeader_2!!.add(heading1_3)
+///=============================================================
 
         val heading2 = ArrayList<String>()
         heading2.add("Overview")
@@ -107,7 +125,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         heading2.add("Tools")
         heading2.add("FAQ")
 
-        listDataChild!![listDataHeader!!.get(0)] = heading1// Header, Child data
+        listDataChild!![listDataHeader!!.get(0)] = listDataHeader_2// Header, Child data
         listDataChild!![listDataHeader!!.get(1)] = heading2
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
