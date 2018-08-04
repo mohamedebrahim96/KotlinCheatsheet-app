@@ -13,7 +13,7 @@ import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 
 class ExpandableListAdapter(private val mContext: Context, private val pdfView: PDFView, private val mListDataHeader: List<ExpandedMenuModel> // header titles
                             , // child data in format of header title, child title
-                            private val mListDataChild: HashMap<ExpandedMenuModel, List<String>>, internal var expandList: ExpandableListView) : BaseExpandableListAdapter() {
+                            private val mListDataChild: HashMap<ExpandedMenuModel, List<Item>>, internal var expandList: ExpandableListView) : BaseExpandableListAdapter() {
 
     override fun getGroupCount(): Int {
         val i = mListDataHeader.size
@@ -34,8 +34,8 @@ class ExpandableListAdapter(private val mContext: Context, private val pdfView: 
     }
     override fun getChild(groupPosition: Int, childPosition: Int): Any {
         Log.d("CHILD", mListDataChild[this.mListDataHeader[groupPosition]]
-                !!.get(childPosition))
-        return this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition)
+                !!.get(childPosition).title)
+        return this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition).title
     }
     override fun getGroupId(groupPosition: Int): Long {
         return groupPosition.toLong()
@@ -75,7 +75,7 @@ class ExpandableListAdapter(private val mContext: Context, private val pdfView: 
                 .findViewById(R.id.submenu) as TextView
         txtListChild.text = childText
         txtListChild.setOnClickListener {  view ->
-            displayFromAsset("kotlincheatsheet.pdf",10)
+            displayFromAsset(this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition).book_name,this.mListDataChild[this.mListDataHeader[groupPosition]]!!.get(childPosition).page_numer)
             Toast.makeText(mContext, "Write your message here", Toast.LENGTH_LONG).show()
         }
         return convertView

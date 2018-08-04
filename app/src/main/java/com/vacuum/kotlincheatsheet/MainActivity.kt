@@ -39,9 +39,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     var mMenuAdapter: ExpandableListAdapter? = null
     var expandableList: ExpandableListView? = null
     var listDataHeader: MutableList<ExpandedMenuModel>? = null
-    var listDataHeader_2: MutableList<Item>? = null
+    //var listDataHeader_2: ArrayList<Item>? = null
 
-    var listDataChild: HashMap<ExpandedMenuModel,Item>? = null
+    var listDataChild: HashMap<ExpandedMenuModel,List<Item>>? = null
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         navigationView.setNavigationItemSelectedListener(this)
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setHomeButtonEnabled(true)
 
         prepareListData()
-        //mMenuAdapter = ExpandableListAdapter(this, pdfView!!, listDataHeader!!, listDataChild!!, expandableList!!)
+        mMenuAdapter = ExpandableListAdapter(this, pdfView!!, listDataHeader!!, listDataChild!!, expandableList!!)
         expandableList!!.setAdapter(mMenuAdapter)
         expandableList!!.setOnChildClickListener(object : ExpandableListView.OnChildClickListener {
             override fun onChildClick(expandableListView: ExpandableListView, view: View, i: Int, i1: Int, l: Long): Boolean {
@@ -73,7 +73,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun prepareListData() {
         listDataHeader = ArrayList()
-        listDataHeader_2 = ArrayList()
+        val cheatsheet = ArrayList<Item>()
+        val ful_documantation = ArrayList<Item>()
 
         listDataChild = HashMap()
 
@@ -94,39 +95,100 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         item3.iconImg = R.drawable.ic_kotlin
         listDataHeader!!.add(item3)
 
+        val item4 = ExpandedMenuModel()
+        item4.iconName = "Programming Kotlin"
+        item4.iconImg = R.drawable.ic_kotlin
+        listDataHeader!!.add(item3)
+//=====================================================
+//=====================================================
+//=====================================================
         // Adding child data
         val heading1_1 = Item()
         heading1_1.page_numer = 0
         heading1_1.title = "Chapter 1"
         heading1_1.book_name = "kotlincheatsheet.pdf"
-        listDataHeader_2!!.add(heading1_1)
+        cheatsheet!!.add(heading1_1)
 
         val heading1_2 = Item()
         heading1_2.page_numer = 1
         heading1_2.title = "Chapter 2"
         heading1_2.book_name = "kotlincheatsheet.pdf"
-        listDataHeader_2!!.add(heading1_2)
+        cheatsheet!!.add(heading1_2)
 
         val heading1_3 = Item()
         heading1_3.page_numer = 2
         heading1_3.title = "Chapter 3"
         heading1_3.book_name = "kotlincheatsheet.pdf"
-        listDataHeader_2!!.add(heading1_3)
+        cheatsheet!!.add(heading1_3)
+///=============================================================
+///=============================================================
+///=============================================================
+///=============================================================
 ///=============================================================
 
-        val heading2 = ArrayList<String>()
-        heading2.add("Overview")
-        heading2.add("Getting Started")
-        heading2.add("Basics")
-        heading2.add("Classes and Objects")
-        heading2.add("Functions and Lambdas")
-        heading2.add("Other")
-        heading2.add("Reference")
-        heading2.add("Tools")
-        heading2.add("FAQ")
+        // Adding child data
+        val heading2_1 = Item()
+        heading2_1.page_numer = 4
+        heading2_1.title = "Overview"
+        heading2_1.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_1)
 
-        listDataChild!![listDataHeader!!.get(0)] = listDataHeader_2// Header, Child data
-        listDataChild!![listDataHeader!!.get(1)] = heading2
+        val heading2_2 = Item()
+        heading2_2.page_numer = 23
+        heading2_2.title = "Getting Started"
+        heading2_2.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_2)
+
+        val heading2_3 = Item()
+        heading2_3.page_numer = 42
+        heading2_3.title = "Basics"
+        heading2_3.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_3)
+
+        val heading2_4 = Item()
+        heading2_4.page_numer = 52
+        heading2_4.title = "Classes and Objects"
+        heading2_4.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_4)
+
+
+        val heading2_5 = Item()
+        heading2_5.page_numer = 90
+        heading2_5.title = "Functions and Lambdas"
+        heading2_5.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_5)
+
+        val heading2_6 = Item()
+        heading2_6.page_numer = 108
+        heading2_6.title = "Other"
+        heading2_6.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_6)
+
+        val heading2_7 = Item()
+        heading2_7.page_numer = 147
+        heading2_7.title = "Reference"
+        heading2_7.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_7)
+
+        val heading2_8 = Item()
+        heading2_8.page_numer = 194
+        heading2_8.title = "Tools"
+        heading2_8.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_8)
+
+        val heading2_9 = Item()
+        heading2_9.page_numer = 223
+        heading2_9.title = "FAQ"
+        heading2_9.book_name = "kotlin-full.pdf"
+        ful_documantation.add(heading2_9)
+        ///=============================================================================
+        ///=============================================================================
+        ///=============================================================================
+        ///=============================================================================
+        ///=============================================================================
+
+        listDataChild!![listDataHeader!!.get(0)] = cheatsheet// Header, Child data
+        listDataChild!![listDataHeader!!.get(1)] = ful_documantation
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
