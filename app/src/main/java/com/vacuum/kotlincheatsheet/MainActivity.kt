@@ -13,10 +13,13 @@ import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import kotlinx.android.synthetic.main.activity_main.*
+import android.widget.ExpandableListView
+
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -35,6 +38,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         pickFile()
     }
 
+    var mMenuAdapter: ExpandableListAdapter? = null
+    var expandableList: ExpandableListView? = null
+    var listDataHeader: List<ExpandedMenuModel>? = null
+    var listDataChild: HashMap<ExpandedMenuModel, List<String>>? = null
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         navigationView.setNavigationItemSelectedListener(this)
@@ -44,6 +51,57 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
+
+        prepareListData()
+        mMenuAdapter = ExpandableListAdapter(this, listDataHeader, listDataChild, expandableList)
+        expandableList!!.setAdapter(mMenuAdapter)
+        expandableList!!.setOnChildClickListener(object : ExpandableListView.OnChildClickListener {
+            override fun onChildClick(expandableListView: ExpandableListView, view: View, i: Int, i1: Int, l: Long): Boolean {
+                //Log.d("DEBUG", "submenu item clicked");
+                return false
+            }
+        })
+        expandableList!!.setOnGroupClickListener(object : ExpandableListView.OnGroupClickListener {
+            override fun onGroupClick(expandableListView: ExpandableListView, view: View, i: Int, l: Long): Boolean {
+                //Log.d("DEBUG", "heading clicked");
+                return false
+            }
+        })
+    }
+
+    private fun prepareListData() {
+        listDataHeader = ArrayList()
+        listDataChild = HashMap()
+
+        val item1 = ExpandedMenuModel()
+        item1.iconName = "heading1"
+        item1.iconImg = android.R.drawable.ic_delete
+        // Adding data header
+        listDataHeader.add(item1)
+
+
+        val item2 = ExpandedMenuModel()
+        item2.iconName = "heading2"
+        item2.iconImg = android.R.drawable.ic_delete
+        listDataHeader.add(item2)
+
+        val item3 = ExpandedMenuModel()
+        item3.iconName = "heading3"
+        item3.iconImg = android.R.drawable.ic_delete
+        listDataHeader.add(item3)
+
+        // Adding child data
+        val heading1 = ArrayList<String>()
+        heading1.add("Submenu of item 1")
+
+        val heading2 = ArrayList<String>()
+        heading2.add("Submenu of item 2")
+        heading2.add("Submenu of item 2")
+        heading2.add("Submenu of item 2")
+
+        listDataChild[listDataHeader.get(0)] = heading1// Header, Child data
+        listDataChild[listDataHeader.get(1)] = heading2
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
