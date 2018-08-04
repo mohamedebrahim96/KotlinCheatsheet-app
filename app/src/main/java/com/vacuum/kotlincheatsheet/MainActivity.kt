@@ -38,20 +38,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     var mMenuAdapter: ExpandableListAdapter? = null
     var expandableList: ExpandableListView? = null
-    var listDataHeader: List<ExpandedMenuModel>? = null
+    var listDataHeader: MutableList<ExpandedMenuModel>? = null
     var listDataChild: HashMap<ExpandedMenuModel, List<String>>? = null
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         navigationView.setNavigationItemSelectedListener(this)
         setSupportActionBar(toolbar)
         drawer = findViewById(R.id.drawer_layout)
+        expandableList =  findViewById(R.id.navigationmenu)
+
         toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open, R.string.drawer_close)
         drawer.addDrawerListener(toggle)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
 
         prepareListData()
-        mMenuAdapter = ExpandableListAdapter(this, listDataHeader, listDataChild, expandableList)
+        mMenuAdapter = ExpandableListAdapter(this, listDataHeader!!, listDataChild!!, expandableList!!)
         expandableList!!.setAdapter(mMenuAdapter)
         expandableList!!.setOnChildClickListener(object : ExpandableListView.OnChildClickListener {
             override fun onChildClick(expandableListView: ExpandableListView, view: View, i: Int, i1: Int, l: Long): Boolean {
@@ -73,20 +75,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         val item1 = ExpandedMenuModel()
         item1.iconName = "heading1"
-        item1.iconImg = android.R.drawable.ic_delete
+        item1.iconImg = R.drawable.ic_kotlin
         // Adding data header
-        listDataHeader.add(item1)
+        listDataHeader!!.add(item1)
 
 
         val item2 = ExpandedMenuModel()
         item2.iconName = "heading2"
-        item2.iconImg = android.R.drawable.ic_delete
-        listDataHeader.add(item2)
+        item2.iconImg = R.drawable.ic_kotlin
+        listDataHeader!!.add(item2)
 
         val item3 = ExpandedMenuModel()
         item3.iconName = "heading3"
-        item3.iconImg = android.R.drawable.ic_delete
-        listDataHeader.add(item3)
+        item3.iconImg = R.drawable.ic_kotlin
+        listDataHeader!!.add(item3)
 
         // Adding child data
         val heading1 = ArrayList<String>()
@@ -97,8 +99,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         heading2.add("Submenu of item 2")
         heading2.add("Submenu of item 2")
 
-        listDataChild[listDataHeader.get(0)] = heading1// Header, Child data
-        listDataChild[listDataHeader.get(1)] = heading2
+        listDataChild!![listDataHeader!!.get(0)] = heading1// Header, Child data
+        listDataChild!![listDataHeader!!.get(1)] = heading2
 
     }
 

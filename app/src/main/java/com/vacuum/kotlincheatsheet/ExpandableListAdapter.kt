@@ -2,13 +2,11 @@ package com.vacuum.kotlincheatsheet
 
 import android.content.Context
 import android.widget.TextView
-import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.graphics.Typeface
 import android.util.Log
 import android.view.View
-import java.nio.file.Files.size
 import android.widget.ExpandableListView
 import android.widget.BaseExpandableListAdapter
 import android.widget.ImageView
