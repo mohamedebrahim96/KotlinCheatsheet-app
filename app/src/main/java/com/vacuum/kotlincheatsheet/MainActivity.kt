@@ -75,6 +75,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         listDataHeader = ArrayList()
         val cheatsheet = ArrayList<Item>()
         val ful_documantation = ArrayList<Item>()
+        val Essentials = ArrayList<Item>()
+        val Programming_Kotlin = ArrayList<Item>()
 
         listDataChild = HashMap()
 
@@ -192,74 +194,84 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         heading3_1.page_numer = 26
         heading3_1.title = "Chapter 1"
         heading3_1.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_1)
+        Essentials!!.add(heading3_1)
 
         val heading3_2 = Item()
         heading3_2.page_numer = 28
         heading3_2.title = "Chapter 2"
         heading3_2.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_2)
+        Essentials!!.add(heading3_2)
 
         val heading3_3 = Item()
         heading3_3.page_numer = 36
         heading3_3.title = "Chapter 3"
         heading3_3.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_3)
+        Essentials!!.add(heading3_3)
 
         val heading3_4 = Item()
         heading3_4.page_numer = 48
         heading3_4.title = "Chapter 4"
         heading3_4.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_4)
+        Essentials!!.add(heading3_4)
 
         val heading3_5 = Item()
         heading3_5.page_numer = 56
         heading3_5.title = "Chapter 5"
         heading3_5.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_5)
+        Essentials!!.add(heading3_5)
 
         val heading3_6 = Item()
         heading3_6.page_numer = 66
         heading3_6.title = "Chapter 6"
         heading3_6.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_6)
+        Essentials!!.add(heading3_6)
 
         val heading3_7 = Item()
         heading3_7.page_numer = 72
         heading3_7.title = "Chapter 7"
         heading3_7.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_7)
+        Essentials!!.add(heading3_7)
 
         val heading3_8 = Item()
         heading3_8.page_numer = 78
         heading3_8.title = "Chapter 8"
         heading3_8.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_8)
+        Essentials!!.add(heading3_8)
 
         val heading3_9 = Item()
         heading3_9.page_numer = 88
         heading3_9.title = "Chapter 9"
         heading3_9.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_9)
+        Essentials!!.add(heading3_9)
 
         val heading3_10 = Item()
         heading3_10.page_numer = 92
         heading3_10.title = "Chapter 10"
         heading3_10.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_10)
+        Essentials!!.add(heading3_10)
 
         val heading3_11 = Item()
         heading3_11.page_numer = 96
         heading3_11.title = "Chapter 11"
         heading3_11.book_name = "Kotlin-Essentials.pdf"
-        cheatsheet!!.add(heading3_11)
+        Essentials!!.add(heading3_11)
         ///=============================================================================
         ///=============================================================================
         ///=============================================================================
         ///=============================================================================
         ///=============================================================================
+        val heading4_1 = Item()
+        heading4_1.page_numer = 0
+        heading4_1.title = "Full Book"
+        heading4_1.book_name = "Programming-Kotlin.pdf"
+        Programming_Kotlin!!.add(heading3_11)
+
+        //=======================================================
+
         listDataChild!![listDataHeader!!.get(0)] = cheatsheet// Header, Child data
         listDataChild!![listDataHeader!!.get(1)] = ful_documantation
+        listDataChild!![listDataHeader!!.get(0)] = Essentials// Header, Child data
+        listDataChild!![listDataHeader!!.get(1)] = Programming_Kotlin
     }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
