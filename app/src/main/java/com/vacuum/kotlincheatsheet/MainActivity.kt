@@ -79,16 +79,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val ful_documantation = ArrayList<Item>()
         val Essentials = ArrayList<Item>()
         val Programming_Kotlin = ArrayList<Item>()
-
         listDataChild = HashMap()
-
         val item1 = ExpandedMenuModel()
         item1.iconName = "Cheat Sheet"
         item1.iconImg = R.drawable.ic_kotlin
         // Adding data header
         listDataHeader!!.add(item1)
-
-
         val item2 = ExpandedMenuModel()
         item2.iconName = "Full Documentation"
         item2.iconImg = R.drawable.ic_kotlin
@@ -310,7 +306,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val inflater = menuInflater
         inflater.inflate(R.menu.activity_main_drawer, menu)
         return true }
-    fun pickFile() {
+    private fun pickFile() {
         val permissionCheck = ContextCompat.checkSelfPermission(this,
                 READ_EXTERNAL_STORAGE)
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
@@ -341,4 +337,3 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 }
-
