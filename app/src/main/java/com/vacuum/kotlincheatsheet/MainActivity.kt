@@ -1,5 +1,7 @@
 package com.vacuum.kotlincheatsheet
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.content.pm.PackageManager
@@ -18,7 +20,7 @@ import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.ExpandableListView
-
+import android.widget.Toast
 
 
 
@@ -26,6 +28,7 @@ import android.widget.ExpandableListView
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     var pdfView:PDFView? = null
     val PERMISSION_CODE = 42042
+    lateinit var mContext: Context
     val READ_EXTERNAL_STORAGE = "android.permission.READ_EXTERNAL_STORAGE"
     private lateinit var drawer: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
@@ -36,6 +39,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        mContext = this
         pdfView  = findViewById(R.id.pdfView)
 
         navigathion_drawer()
@@ -285,12 +289,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onConfigurationChanged(newConfig)
         toggle.onConfigurationChanged(newConfig)
     }
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (toggle.onOptionsItemSelected(item)) {
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
     override fun onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START)
@@ -298,10 +296,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             super.onBackPressed()
         }
     }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.activity_main_drawer, menu)
-        return true }
     private fun pickFile() {
         val permissionCheck = ContextCompat.checkSelfPermission(this,
                 READ_EXTERNAL_STORAGE)
@@ -332,4 +326,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.activity_main_drawer, menu)
+        return true }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        when(item!!.itemId)
+        {
+            R.id.nav_item_about ->{
+                val intent1 = Intent(this, AboutActivity::class.java)
+                this.startActivity(intent1)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+
+
+
 }
+
