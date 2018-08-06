@@ -78,6 +78,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
+
+
     private fun prepareListData() {
         listDataHeader = ArrayList()
         val cheatsheet = ArrayList<Item>()
