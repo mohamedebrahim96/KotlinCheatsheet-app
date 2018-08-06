@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private var expandableList: ExpandableListView? = null
     private var listDataHeader: MutableList<ExpandedMenuModel>? = null
     private var listDataChild: HashMap<ExpandedMenuModel,List<Item>>? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,8 +41,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigathion_drawer()
         pickFile()
     }
-
-
     private fun navigathion_drawer() {
         val toolbar: Toolbar = findViewById(R.id.toolbar_main)
         navigationView.setNavigationItemSelectedListener(this)
