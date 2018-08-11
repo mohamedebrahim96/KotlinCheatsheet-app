@@ -20,11 +20,15 @@ You can have the most important elements close at hand — it is the best ev
 
 **Features:**
 
-- Discover the most popular, the highest rated and the most rated movies
-- Watch movie trailers and teasers
-- Read reviews from other users
-- Mark movies as favorites
-- Search for movies
+Google Play Release V2.6:
+- KotlinCheatSheet 
+- kotlin full documentation
+- Kotlin Essentials
+- Programming Kotlin
+- Fix Bugs
+- About Us
+- Discover Kotlin Methods
+- Read reviews about kotlin
 - Offline work
 - Material design
 - UI optimized for phone and tablet
@@ -37,6 +41,7 @@ Screenshots
 -----------
 
 <img width="30%" src="./design/googleplay/1.jpg" /> <img width="30%" src="./design/googleplay/2.jpg" /> <img width="30%" src="./design/googleplay/3.jpg" /> <img width="30%" src="./design/googleplay/4.jpg" /> <img width="30%" src="./design/googleplay/5.jpg" /> <img width="30%" src="./design/googleplay/6.jpg" />
+
 Developer setup
 ---------------
 
@@ -45,15 +50,70 @@ Developer setup
 - Java 8
 - Latest version of Android SDK and Android Build Tools
 
-### API Key
+How to Contribute
+=======
 
-The app uses themoviedb.org API to get movie information and posters. You must provide your own [API key][1] in order to build the app.
+We welcome your contributions to this project. There are various ways to contribute:
 
-Just put your API key into `~/.gradle/gradle.properties` file (create the file if it does not exist already):
+**Reporting issues**
 
-```gradle
-MY_MOVIE_DB_API_KEY="abc123"
+Help improve the project by reporting issues that you find by filing a new issue here in this repository
+
+**Features suggestions**
+
+You can also add feature suggestions by filing a new issue here
+
+**Documentation**
+
+You can help by adding or improving existing documentation. Simply send us a pull request for us to consider your proposed changes.
+
+**Bug fixes**
+
+Pull requests are welcome for minor bug fixes that do not involve any changes to existing API. These changes should ideally be accompanied by a test case that would have otherwise failed without the fix.
+
+**New API or API changes**
+
+Pull requests for new APIs or changes to existing APIs are welcome, but may require a bit of
+discussion. Consider creating an issue to discuss any changes before you implement the change.
+
+Before submitting
+=======
+
+* Check that lint, unit tests, and code style enforcement all pass by running `./gradlew check`. Use Lint to check the warning and errors you code can have, clean code is a happy code, Android studio counts with a Lint processor and analyzer, so please refer yourself to this link: (https://developer.android.com/studio/write/lint.html)
+* Check that instrumentation tests pass by starting an API 26 or newer emulator and running
+`./gradlew connectedCheck` 
+* Make comments in every function that you are implementing
 ```
+/**
+* Created by Mohamedebrahim96 on 11/29/18.
+* My Application, main activity to launch application
+*/
+
+@Module
+class MyApplication : Application {
+
+private var mApplication: Application? = null
+/**
+* Companion Object with static objects
+*/
+companion object {
+var mAppComponent: AppComponent? = null
+}
+}
+```
+
+* Every method that was implemented in the Presentation Layer, must be tested, at least the Presenter of every Activity and every Fragment, if they dont have it, the pull will be rejected.
+* Every method must be clean and sharpe, we don't need any boilerplate, so please make code readable
+
+
+Handle of this project
+=======
+
+In order to use this project, please follow the next steps:
+
+1. If you are using Android 3.0 or later, the project will be inserting by all ends the necesary plugins for Koltin
+2. If not, you will require using the plugin of JetBrains, to solve Kotlin, you can found it inside Preferences -> Plugins and select Kotlin plugin
+3. Then, you can simple import this project and you are ready to go
 
 ### Building
 
@@ -88,5 +148,5 @@ License
 [2]: app/src/test/
 [3]: app/src/androidTest/
 [4]: quality/
-[5]: https://github.com/mohamedebrahim96/PlexMedia/raw/master/version/release/app-release.apk
+[5]: https://play.google.com/store/apps/details?id=com.vacuum.kotlincheatsheet
 
