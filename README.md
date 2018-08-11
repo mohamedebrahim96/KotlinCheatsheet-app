@@ -4,6 +4,9 @@ KotlinCheatsheet-app
 
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/9d71713560374c938dba8a476ce8debf)](https://www.codacy.com/app/maksim-m/Popular-Movies-App) [![Build Status](https://travis-ci.org/maksim-m/Popular-Movies-App.svg?branch=master)](https://travis-ci.org/maksim-m/Popular-Movies-App) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/4fad0c93fd3749d690571a7a728ce047)](https://www.codacy.com/app/piyushguptaece/hypertrack-live-android?utm_source=github.com&utm_medium=referral&utm_content=hypertrack/hypertrack-live-android&utm_campaign=badger) [![Slack Status](http://slack.hypertrack.com/badge.svg)](http://slack.hypertrack.com) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-HyperTrack%20Live-brightgreen.svg?style=flat)](https://android-arsenal.com/details/3/5754) [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/licenses/MIT) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+
+<img width="45%" src="./design/design.jpeg" />
+
 You can have the most important elements close at hand — it is the best everyday support for Kotlin developer. Kotlin is a new programming language created by JetBrains and targeting the JVM, Android and the browser. Kotlin is concise, safe, and fully interoperable with existing Java and JavaScript code. Kotlin helps avoid common errors such as NPEs and strives to make programming more pleasant.  At the Google I/O conference, Google has announced official support for Kotlin as a language for developing Android applications, meaning that Kotlin development tools are now bundled with Android Studio.  This cheat sheet will introduce you to the most important elements of the Kotlin syntax. To learn more, visit the Kotlin web site here.
 
 
