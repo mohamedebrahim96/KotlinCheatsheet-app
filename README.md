@@ -64,8 +64,6 @@ Just run `build.sh` to ensure that project code is valid and stable.
 This will run local unit tests on the JVM, instrumented tests on connected device (or emulator) and analyse code with Checkstyle, Findbugs and PMD.
 
 
-
-
 License
 -------
 
