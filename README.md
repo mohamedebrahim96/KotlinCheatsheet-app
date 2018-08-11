@@ -33,8 +33,7 @@ You can download APK [on releases page][5].
 Screenshots
 -----------
 
-<img width="30%" src="./design/device-2018-08-06-214313.png" /> <img width="30%" src="./design/device-2018-08-06-214357.png" /> <img width="30%" src="./design/device-2018-08-06-214425.png" /> <img width="30%" src="./design/device-2018-08-06-214517.png" /> <img width="30%" src="./design/device-2018-08-06-214538.png" />
-
+<img width="30%" src="./design/device-2018-08-06-214313.png" /> <img width="30%" src="./design/device-2018-08-06-214357.png" /> <img width="30%" src="./design/device-2018-08-06-214425.png" /> <img width="30%" src="./design/device-2018-08-06-214517.png" /> <img width="30%" src="./design/device-2018-08-06-214538.png" /> <img width="30%" src="./design/googleplay/6.jpg" />
 Developer setup
 ---------------
 
