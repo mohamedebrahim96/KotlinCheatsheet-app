@@ -69,7 +69,7 @@ This will run local unit tests on the JVM, instrumented tests on connected devic
 License
 -------
 
-    Copyright 2017 PlexMedia,Inc
+    Copyright 2018 Vacuum,Inc
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
