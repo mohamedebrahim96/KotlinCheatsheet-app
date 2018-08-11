@@ -9,10 +9,13 @@ KotlinCheatsheet-app
 
 You can have the most important elements close at hand — it is the best everyday support for Kotlin developer. Kotlin is a new programming language created by JetBrains and targeting the JVM, Android and the browser. Kotlin is concise, safe, and fully interoperable with existing Java and JavaScript code. Kotlin helps avoid common errors such as NPEs and strives to make programming more pleasant.  At the Google I/O conference, Google has announced official support for Kotlin as a language for developing Android applications, meaning that Kotlin development tools are now bundled with Android Studio.  This cheat sheet will introduce you to the most important elements of the Kotlin syntax. To learn more, visit the Kotlin web site here.
 
+<a href="https://itunes.apple.com/us/app/whos-in-space/id916499517">
+<img alt="Get it on App Store" src="badge.svg" width="150" />
+</a>  <a href="https://play.google.com/store/apps/details?id=com.vacuum.kotlincheatsheet">
+<img alt="Get it on Google Play" src="http://steverichey.github.io/google-play-badge-svg/img/en_get.svg" width="190" />
+</a>
 
-
-Plex is the best leading subscription service for watching TV episodes and movies on your phone.  
-This plex mobile application delivers the best experience anywhere, anytime.  Get the free app as a part of your plex membership and you can instantly watch thousands of TV episodes &amp; movies on your phone.   If you are not a plex member sign up for plex and start enjoying immediately on your phone with our one-month free trial.
+======================================
 
 
 **Features:**
